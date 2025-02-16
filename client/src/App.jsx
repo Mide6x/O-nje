@@ -160,12 +160,19 @@ function App() {
       <Navbar />
       <div className="site-layout-content">
         <span className="titleText">
-          <span className="ounje">Oúnje</span> - A Recipe Sharing Platform 🌮
+          <span className="ounje">Oúnje</span> - A Recipe Sharing Platform
+          <div className="emoji-container">
+            {["🌮", "🍜", "🍕", "🍱"].map((emoji, index) => (
+              <span key={index} style={{"--delay": index}}>
+                {emoji}
+              </span>
+            ))}
+          </div>
         </span>
         <div className="recipe-content">
           <div className="searchBarContainer">
             <Input
-              placeholder="Search for a Recipe"
+              placeholder="Search for yummy recipes ✨"
               value={searchInput}
               onChange={handleSearchInputChange}
               className="searchBar"
@@ -173,7 +180,7 @@ function App() {
                 <FontAwesomeIcon
                   icon={faMicrophone}
                   size="lg"
-                  style={{ color: isListening ? "red" : "#522f15", cursor: "pointer" }}
+                  style={{ color: isListening ? "#ff6b6b" : "#522f15", cursor: "pointer" }}
                   onClick={handleMicClick}
                 />
               }
@@ -187,11 +194,13 @@ function App() {
               renderItem={(recipe) => (
                 <List.Item className="listItem">
                   <div className="recipeAbout">
-                    <span className="recipeName">{recipe.name}</span> -{" "}
-                    <span className="recipeName">Created {formatDate(recipe.createdAt)}</span> -{" "}
-                    <span>
-                      <span className="recipeName">
-                        Rated by {recipe.ratings.length} {englishWord(recipe)}
+                    <span className="recipeName">
+                      {recipe.name} <span className="recipe-emoji">{getRandomFoodEmoji()}</span>
+                    </span>{" "}
+                    <span className="recipe-meta">
+                      • Posted {formatDate(recipe.createdAt)} •{" "}
+                      <span className="rating-count">
+                        {recipe.ratings.length} {englishWord(recipe)} rated this
                       </span>
                     </span>
                   </div>
@@ -200,7 +209,9 @@ function App() {
                       {findAverage(recipe.ratings).toFixed(1)} ⭐️
                     </Button>
                     <Button className="useBtn">
-                      <Link to={`/recipes/${recipe._id}`}>View Recipe 😋</Link>
+                      <Link to={`/recipes/${recipe._id}`}>
+                        View Recipe <span className="btn-emoji">😋</span>
+                      </Link>
                     </Button>
                   </div>
                 </List.Item>
@@ -212,6 +223,14 @@ function App() {
       <Footer />
     </div>
   );
+}
+
+function getRandomFoodEmoji() {
+  const foodEmojis = [
+    "🍕", "🌮", "🍜", "🍱", "🍣", "🥗", "🥘", "🍲", "🍛", "🍝",
+    "🌯", "🥪", "🧆", "🥨", "🥐", "🍖", "🍗", "🥩", "🍤", "🦐"
+  ];
+  return foodEmojis[Math.floor(Math.random() * foodEmojis.length)];
 }
 
 export default App;
