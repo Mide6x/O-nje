@@ -5,8 +5,14 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
+      // '/api': {
+      //   target: 'https://ounje-ywkz.onrender.com',
+      //   changeOrigin: true,
+      //   rewrite: (path) => path.replace(/^\/api/, ''),
+      //   secure: true,
+      // },
       '/api': {
-        target: 'https://ounje-ywkz.onrender.com',
+        target: 'http://localhost:3000',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
         secure: true,

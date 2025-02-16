@@ -18,14 +18,14 @@ const RecipePage = () => {
 
   useEffect(() => {
     axios
-      .get(`/api/recipes/${id}`)
+      .get(`http://localhost:3000/api/recipes/${id}`)
       .then((response) => setRecipe(response.data))
       .catch((error) => console.error("Error fetching recipe:", error));
   }, [id]);
 
   const handleRate = (value) => {
     axios
-      .put(`/api/recipes/${id}/rate`, { rating: value })
+      .put(`http://localhost:3000/api/recipes/${id}/rate`, { rating: value })
       .then((response) => {
         setRecipe((prevRecipe) => ({
           ...prevRecipe,

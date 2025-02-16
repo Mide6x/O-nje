@@ -48,7 +48,7 @@ Oúnje is a recipe-sharing platform where users can view, add, and rate recipes.
 
    Create a `.env` file in the `backend` directory and add your MongoDB connection string:
 
-   ```
+   ```bash
    MONGO_URI=xx
    PORT=xx
    ```
@@ -86,12 +86,15 @@ Oúnje is a recipe-sharing platform where users can view, add, and rate recipes.
 ## API Endpoints
 
 - **GET /api/recipes**
+
   - Get all recipes.
 
 - **POST /api/recipes**
+
   - Add a new recipe.
 
 - **GET /api/recipes/{id}**
+
   - Get a recipe by ID.
 
 - **PUT /api/recipes/{id}/rate**
@@ -132,5 +135,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - Node.js and Express for server-side logic.
 - MongoDB for database storage.
 - Swagger UI for API documentation.
-
-```

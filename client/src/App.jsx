@@ -28,7 +28,7 @@ function App() {
   // Fetch recipes
   useEffect(() => {
     axios
-      .get("/api/recipes")
+      .get("http://localhost:3000/api/recipes")
       .then((response) => {
         console.log("API Response:", response);
         const sortedRecipes = sortRecipesByRating(response.data);

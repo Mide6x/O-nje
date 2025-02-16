@@ -21,7 +21,7 @@ const AddRecipePage = () => {
     setError(""); 
 
     axios
-      .post("/api/recipes", {
+      .post("http://localhost:3000/api/recipes", {
         name,
         ingredients: ingredients.split(",").map((ingredient) => ingredient.trim()),
         steps,
@@ -39,7 +39,7 @@ const AddRecipePage = () => {
     setError("");
 
     try {
-      const response = await axios.post("/api/generateInstructions", {
+      const response = await axios.post("http://localhost:3000/api/generateInstructions", {
         model: "gpt-3.5-turbo",
         messages: [
           {
